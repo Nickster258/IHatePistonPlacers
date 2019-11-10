@@ -21,7 +21,6 @@ public class PistonPlaceEvent implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        System.out.println(event.getBlock().getBlockData().getAsString());
         if (event.getBlock().getBlockData().getMaterial().equals(Material.PISTON)) {
             if (!((Piston) event.getBlockPlaced().getBlockData()).isExtended()) {
                 return;
