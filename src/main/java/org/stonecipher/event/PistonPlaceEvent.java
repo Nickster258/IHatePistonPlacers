@@ -21,7 +21,9 @@ public class PistonPlaceEvent implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+
         if (event.getBlock().getBlockData().getMaterial().equals(Material.PISTON)) {
+
             if (!((Piston) event.getBlockPlaced().getBlockData()).isExtended()) {
                 return;
             }
@@ -29,7 +31,9 @@ public class PistonPlaceEvent implements Listener {
             BlockFace facing = ((Piston) event.getBlock().getBlockData()).getFacing();
             event.setCancelled(true);
             setBlockPlaced(placeLocation, Material.PISTON, facing);
+
         } else if (event.getBlock().getBlockData().getMaterial().equals(Material.STICKY_PISTON)) {
+
             if (!((Piston) event.getBlockPlaced().getBlockData()).isExtended()) {
                 return;
             }
@@ -37,10 +41,13 @@ public class PistonPlaceEvent implements Listener {
             BlockFace facing = ((Piston) event.getBlock().getBlockData()).getFacing();
             event.setCancelled(true);
             setBlockPlaced(placeLocation, Material.STICKY_PISTON, facing);
+
         }
+
     }
 
     private void setBlockPlaced(final Location location, final Material material, final BlockFace facing) {
+
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -50,5 +57,6 @@ public class PistonPlaceEvent implements Listener {
                 location.getWorld().getBlockAt(location).setBlockData(pistonData);
             }
         }.runTaskLater(this.plugin, 2);
+
     }
 }
